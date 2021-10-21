@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sleep Training</title>
+</head>
+
+<body>
+    <table style="height:100%;width:100%;position: absolute; top: 0; bottom: 0; left: 0; right: 0;">
+        <tr style="height: 90%;">
+            <td id="image" colspan="2" style="background-size:100%">
+            </td>
+        </tr>
+        <tr style="height: 10%;">
+            <td style="width: 50%;"><button onclick="calcSrc(new Date('March 13, 20 06:20'))" style="width: 100%;">
+                    Test Day
+                </button></td>
+            <td style="width: 50%;"><button onclick="calcSrc(new Date('March 13, 20 18:00'))" style="width: 100%;">
+                    Test Night
+                </button></td>
+        </tr>
+    </table>
+</body>
+
+<script>
+    calcSrc(new Date());
+    setInterval('calcSrc(new Date())', 10000);
+
+    function calcSrc(date) {
+        const day = "https://images.squarespace-cdn.com/content/v1/558a5523e4b04871ce5d2e4d/1549501945876-90AFT30N45RPUS7B0HGB/shutterstock_518591641.jpg?format=2500w"
+        const night = "https://wallpaperaccess.com/full/363426.jpg"
+        var image_container = document.getElementById('image');
+        var current_hour = date.getHours();
+        var image_url = (current_hour < 6 || current_hour > 17) ? night : day;
+
+        image_container.style.backgroundImage = 'url(' + image_url + ')';
+    }
+</script>
+
+</html>
