@@ -30,8 +30,8 @@
         const day = "https://images.squarespace-cdn.com/content/v1/558a5523e4b04871ce5d2e4d/1549501945876-90AFT30N45RPUS7B0HGB/shutterstock_518591641.jpg?format=2500w"
         const night = "https://wallpaperaccess.com/full/363426.jpg"
         var image_container = document.getElementById('image');
-        var current_hour = date.getHours();
-        var image_url = (current_hour < 6 || current_hour > 17) ? night : day;
+        var current_time = date.toTimeString().split(' ')[0];
+        var image_url = (current_time < '05:30:00' || current_time >= '18:00:00') ? night : day;
 
         image_container.style.backgroundImage = 'url(' + image_url + ')';
     }
