@@ -31,7 +31,14 @@
         const night = "https://wallpaperaccess.com/full/363426.jpg"
         var image_container = document.getElementById('image');
         var current_time = date.toTimeString().split(' ')[0];
-        var image_url = (current_time < '05:30:00' || current_time >= '18:00:00') ? night : day;
+        const urlParams = new URLSearchParams(window.location.search);
+        var morning = urlParams.get('morning');
+
+        if (!morning) {
+            morning = '05:30:00';
+        }
+
+        const image_url = (current_time < morning || current_time >= '18:00:00') ? night : day;
 
         image_container.style.backgroundImage = 'url(' + image_url + ')';
     }
